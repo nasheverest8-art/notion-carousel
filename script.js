@@ -1,25 +1,38 @@
 const images = [
-
 {
-src:"images/image1.jpg",
-caption:"Caption for Image 1"
+src:"1.png",
+caption:"Image 1"
 },
 
 {
-src:"images/image2.jpg",
-caption:"Caption for Image 2"
+src:"2.png",
+caption:"Image 2"
 },
 
 {
-src:"images/image3.jpg",
-caption:"Caption for Image 3"
+src:"3.png",
+caption:"Image 3"
 },
 
 {
-src:"images/image4.jpg",
-caption:"Caption for Image 4"
+src:"4.png",
+caption:"Image 4"
+},
+
+{
+src:"5.png",
+caption:"Image 5"
+},
+
+{
+src:"6.png",
+caption:"Image 6"
+},
+
+{
+src:"7.png",
+caption:"Image 7"
 }
-
 ];
 
 let current = 0;
