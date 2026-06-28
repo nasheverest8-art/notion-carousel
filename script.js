@@ -1,26 +1,128 @@
 const images = [
-    "images/image1.jpg",
-    "images/image2.jpg",
-    "images/image3.jpg",
-    "images/image4.jpg"
+
+{
+src:"images/image1.jpg",
+caption:"Caption for Image 1"
+},
+
+{
+src:"images/image2.jpg",
+caption:"Caption for Image 2"
+},
+
+{
+src:"images/image3.jpg",
+caption:"Caption for Image 3"
+},
+
+{
+src:"images/image4.jpg",
+caption:"Caption for Image 4"
+}
+
 ];
 
 let current = 0;
 
-const image = document.getElementById("carousel-image");
+const slide = document.getElementById("slide");
+const caption = document.getElementById("caption");
+const thumbs = document.getElementById("thumbnails");
 
-function showImage(){
-    image.src = images[current];
+function update(){
+
+    slide.style.opacity=0;
+
+    setTimeout(()=>{
+
+        slide.src=images[current].src;
+        caption.textContent=images[current].caption;
+
+        slide.style.opacity=1;
+
+        document.querySelectorAll(".thumb").forEach((t,i)=>{
+
+            t.classList.toggle("active",i===current);
+
+        });
+
+    },150);
+
 }
 
-document.getElementById("next").onclick = () =>{
-    current = (current + 1) % images.length;
-    showImage();
+images.forEach((img,index)=>{
+
+    const t=document.createElement("img");
+
+    t.src=img.src;
+
+    t.className="thumb";
+
+    t.onclick=()=>{
+
+        current=index;
+
+        update();
+
+    };
+
+    thumbs.appendChild(t);
+
+});
+
+document.querySelector(".left").onclick=()=>{
+
+    current=(current-1+images.length)%images.length;
+
+    update();
+
 };
 
-document.getElementById("prev").onclick = () =>{
-    current = (current - 1 + images.length) % images.length;
-    showImage();
+document.querySelector(".right").onclick=()=>{
+
+    current=(current+1)%images.length;
+
+    update();
+
 };
 
-showImage();
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="ArrowRight")
+        document.querySelector(".right").click();
+
+    if(e.key==="ArrowLeft")
+        document.querySelector(".left").click();
+
+});
+
+let startX=0;
+
+slide.addEventListener("touchstart",(e)=>{
+
+    startX=e.touches[0].clientX;
+
+});
+
+slide.addEventListener("touchend",(e)=>{
+
+    let endX=e.changedTouches[0].clientX;
+
+    if(endX-startX>50)
+        document.querySelector(".left").click();
+
+    if(startX-endX>50)
+        document.querySelector(".right").click();
+
+});
+
+document.getElementById("fullscreen").onclick=()=>{
+
+    if(slide.requestFullscreen){
+
+        slide.requestFullscreen();
+
+    }
+
+};
+
+update();
