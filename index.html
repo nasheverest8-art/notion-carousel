@@ -11,15 +11,23 @@
 
 <div class="carousel">
 
-<button id="prev">&#10094;</button>
+    <button class="arrow left">&#10094;</button>
 
-<div class="image-container">
-<img id="carousel-image" src="images/image1.jpg">
+    <div class="viewer">
+
+        <img id="slide" src="images/image1.jpg">
+
+        <div id="caption"></div>
+
+        <button id="fullscreen">⛶</button>
+
+    </div>
+
+    <button class="arrow right">&#10095;</button>
+
 </div>
 
-<button id="next">&#10095;</button>
-
-</div>
+<div id="thumbnails"></div>
 
 <script src="script.js"></script>
 
