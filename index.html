@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Carousel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Carousel</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="carousel">
+    <div class="carousel">
+        <div class="slides" id="slides">
 
-    <button class="arrow left">&#10094;</button>
+            <div class="slide">
+                <img src="https://picsum.photos/id/1015/1200/700" alt="">
+            </div>
 
-    <div class="viewer">
+            <div class="slide">
+                <img src="https://picsum.photos/id/1016/1200/700" alt="">
+            </div>
 
-        <img id="slide" src="images/image1.jpg">
+            <div class="slide">
+                <img src="https://picsum.photos/id/1025/1200/700" alt="">
+            </div>
 
-        <div id="caption"></div>
+        </div>
 
-        <button id="fullscreen">⛶</button>
+        <button class="nav prev" onclick="moveSlide(-1)">
+            ❮
+        </button>
 
+        <button class="nav next" onclick="moveSlide(1)">
+            ❯
+        </button>
+
+        <div class="dots" id="dots"></div>
     </div>
 
-    <button class="arrow right">&#10095;</button>
-
-</div>
-
-<div id="thumbnails"></div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
